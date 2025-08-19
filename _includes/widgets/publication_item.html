@@ -4,7 +4,7 @@
   <span class="pub-content">
     {% include widgets/author_list.html authors=item.authors %},
     {% if item.pub_link %}
-      <a href="{{ item.pub_link }}">``{{ item.title }},''</a>
+      <a href="{{ site.baseurl }}{{ item.pub_link }}">``{{ item.title }},''</a>
     {% else %}
       ``{{ item.title }},''
     {% endif %}
