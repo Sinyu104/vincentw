@@ -1,0 +1,49 @@
+---
+layout: default
+title : Research
+navbar_title: Research
+---
+
+
+
+<!-- ================== Current Research Work ================== -->
+<h4 class="font-italic">
+  “My research aims to build intelligent and adaptive 6G wireless systems with a focus on achieving 
+  <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">sustainable, reliable, and ubiquitous connectivity</mark>. 
+  To realize this vision, I explore multiple emerging technologies, including 
+  <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">Terahertz spectrum utilization</mark>, 
+  <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">AI-native network design</mark>, 
+  <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">integrated sensing and communication</mark>, 
+  <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">semantic and task-oriented transmission</mark>, 
+  and <mark style="background: linear-gradient(to top, #fff9c4 50%, transparent 50%);">O-RAN-based architectures</mark>, 
+  as the foundation for future AI-driven societies.”
+</h4>
+
+
+<h3 class="pt-4">📌 Current Research Work</h3>
+
+<div class="container px-0">
+  <div class="px-3">
+    <div class="row">
+      {% assign current_research = site.research | where_exp: "item", "item.path contains '/current/'" %}
+      {% for item in current_research %}
+        {% include widgets/research_card.html item=item %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<hr />
+<!-- ================== Past Research Work ================== -->
+ <h3 class="pt-4">⏰ Past Research Work</h3>
+ 
+<div class="container px-0">
+  <div class="px-3">
+    <div class="row">
+      {% assign past_research = site.research | where_exp: "item", "item.path contains '/past/'" %}
+      {% for item in past_research %}
+        {% include widgets/research_card.html item=item %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

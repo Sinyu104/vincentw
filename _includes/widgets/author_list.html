@@ -3,8 +3,8 @@
 {%- assign has_corresponding = false -%}
 
 {%- for _key in authors -%}
-    {%- assign last_char = _key | slice: -1, 1%}
-    {%- assign last_2chars = _key | slice: -2, 2%}
+    {%- assign last_char = _key | slice: -1, 1 %}
+    {%- assign last_2chars = _key | slice: -2, 2 %}
     {%- if last_2chars == "*#" or last_2chars == "#*" -%}
         {%- assign key = _key | replace: "#*", "" | replace: "*#", "" -%}
         {%- assign mark = "*<sup>#</sup>" -%}
@@ -24,25 +24,27 @@
     {%- endif -%}
 
     {%- assign info = site.data.authors[key] -%}
-
-    {%- if info['name'] -%}
-        {%- assign name = info['name'] -%}
-    {%- else -%}
-        {%- assign name = key -%}
-    {%- endif -%}
+    {%- assign name = info['name'] | default: key -%}
 
     {%- if info['bold'] == true -%}
         {%- assign display_name = name | append: mark | prepend: "<strong>" | append: "</strong>" -%}
     {%- else -%}
         {%- assign display_name = name | append: mark -%}
     {%- endif -%}
-    
+
     {%- if info['url'] -%}
-        <a class="text-body" target="_blank" href="{{ info['url'] }}">{{ display_name }}</a>{%- if forloop.index < authors.size -%}, {% endif -%}
+        <a class="text-body" target="_blank" href="{{ info['url'] }}">{{ display_name }}</a>
     {%- else -%}
-        <span class="text-body">
-            {{ display_name }}{%- if forloop.index < authors.size -%}, {% endif -%}
-        </span>
+        <span class="text-body">{{ display_name }}</span>
+    {%- endif -%}
+
+    {%- if authors.size > 2 -%}
+        {%- if forloop.index < authors.size-1 -%}, 
+        {%- elsif forloop.index == authors.size-1 -%} and 
+        {%- endif -%}
+    {%- elsif authors.size == 2 -%}
+        {%- if forloop.index == 1 -%} and 
+        {%- endif -%}
     {%- endif -%}
 
 {%- endfor -%}

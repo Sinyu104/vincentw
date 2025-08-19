@@ -9,10 +9,6 @@ navbar_title: Home
 
 {% include widgets/debug_url.html %}
 
-{% if site.data.display.homepage.show_experience %}
-    {% include widgets/experience_card.html %}
-{% endif %}
-
 {% if site.data.display.homepage.show_news %}
     {% assign count_news = site.news | size %}
     {% if count_news > 0 %}
@@ -23,8 +19,34 @@ navbar_title: Home
 {% if site.data.display.homepage.show_selected_publications %}
     {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
     {% 
-        include widgets/publication_card.html 
+        include widgets/selected_publication_card.html 
         publications=pubs
         title='<i class="fas fa-star"></i> Selected Publications'
     %}
 {% endif %}
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".abstract-text").forEach(function(abstract) {
+    const btn = abstract.nextElementSibling; // The Read More link
+    if (!btn || !btn.classList.contains("read-more")) return;
+
+    // Hide button if content fits in clamp
+    if (abstract.scrollHeight <= abstract.clientHeight + 1) {
+      btn.style.display = "none";
+    }
+
+    // Initial label
+    btn.textContent = "[Read More]";
+
+    // Click handler
+    btn.addEventListener("click", function() {
+      abstract.classList.toggle("expanded");
+      btn.textContent = abstract.classList.contains("expanded") ? "[Read Less]" : "[Read More]";
+    });
+  });
+});
+</script>
+
+

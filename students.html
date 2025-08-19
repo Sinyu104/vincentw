@@ -1,0 +1,87 @@
+---
+layout: default
+title : Students
+navbar_title: Students
+---
+
+
+
+<!-- ================== Current Research Work ================== -->
+
+<h3 class="pt-4">Current Members of my Research Group</h3>
+
+<div class="container px-0">
+  <div class="px-3">
+    <div class="row">
+      {% assign current_students = site.students | where_exp: "item", "item.path contains '/current/'" %}
+      {% for item in current_students %}
+        {% include widgets/student_card.html item=item %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<hr />
+<!-- ================== Past Research Work ================== -->
+
+
+<style>
+  .badge-rounded-big {
+  border-radius: 999px;
+  padding: 0.5em 1em;
+  font-size: 0.9rem;
+}
+  .degree-title {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    border-left: 5px solid #ccc;
+    padding-left: 10px;
+  }
+  .alumni-list li {
+  margin-bottom: 0.5rem; /* Adjust this value as needed */
+}
+</style>
+
+<h3 class="pt-4">Alumni:</h3>
+
+<div class="container px-0">
+  <div class="px-3">
+    <div class="my-3 p-3 bg-white shadow-sm rounded">
+
+      <h5 class="degree-title">Ph.D.:</h5>
+      <ul class="list-unstyled alumni-list">
+        {% assign phd_alumni = site.students | where: "degree", "Ph.D." | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
+        {% for student in phd_alumni %}
+          <li>
+            <span class="badge badge-warning badge-rounded-big mr-2"">{{ student.year }}</span>
+            <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="my-3 p-3 bg-white shadow-sm rounded">
+      <h5 class="degree-title">Postdoc:</h5>
+      <ul class="list-unstyled alumni-list">
+        {% assign postdoc_alumni = site.students | where: "degree", "Postdoc" | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
+        {% for student in postdoc_alumni %}
+          <li>
+            <span class="badge badge-primary badge-rounded-big mr-2">{{ student.year }}</span>
+            <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="my-3 p-3 bg-white shadow-sm rounded">
+      <h5 class="degree-title">MASc / MEng:</h5>
+      <ul class="list-unstyled alumni-list">
+        {% assign masc_alumni = site.students | where: "degree", "MASc/MEng" | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
+        {% for student in masc_alumni %}
+          <li>
+            <span class="badge badge-success badge-rounded-big mr-2">{{ student.year }}</span>
+            <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

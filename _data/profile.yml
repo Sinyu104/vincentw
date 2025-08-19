@@ -1,18 +1,13 @@
-primary_name: "Your Name"
+primary_name: "Vincent Wong"
 secondary_name: ""
-navbar_name: "Your Name"
+navbar_name: "Vincent Wong"
 
 positions:
-- logo: /assets/images/badges/MIT_Social_circle.png  # Logo is optional
-  name: Position 1 with logo
-- name: Position 2 without logo
-
-
-email: "your@email.com"
+- name: Professor @ UBC ECE
+  address: 2332 Main Mall Vancouver, BC, Canada V6T 1Z4
+email: "vincentw@ece.ubc.ca"
 # cv_link: link-to-your-cv-file
-gscholar: xFmQpf4AAAAJ  # This is an example, replace it with your own Google Scholar ID
-github: your_github_id
-twitter: your_twitter_id  # Do not include the '@' symbol
+gscholar: 48FNZ18AAAAJ  # This is an example, replace it with your own Google Scholar ID
 # wechat_qrcode: /assets/images/etc/wechat.jpg
 # wechat_prompt: >-
 #   Please tell me your <strong>name</strong> and <strong>affiliation</strong> (current or past) when adding my wechat. Thanks!
@@ -22,17 +17,10 @@ twitter: your_twitter_id  # Do not include the '@' symbol
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    A <a href="https://en.wikipedia.org/wiki/Bicolor_cat" target="_blank">bicolor cat</a> is a cat with white fur combined with fur of some other colour, for example solid black, tabby, or colourpointed.
-  </p>
-  <p>
-    There are various patterns of a bicolour cat. These range from the Van-patterned (colour on the crown of the head 
-    and the tail only) to a solid colour with a throat locket or medallion. Bicolour coats are found in many cat breeds, 
-    as well as being common in domestic longhair and domestic shorthair cats.
+    Vincent Wong received his B.Sc. (with distinction) degree from the University of Manitoba in 1994, M.A.Sc. degree from the University of Waterloo in 1996, and Ph.D. from the University of British Columbia (UBC) in 2000, all in electrical engineering. From 2000 - 2001, he was a systems engineer at PMC-Sierra Inc. (now Microchip Technology Inc.). In 2002, he joined the Department of Electrical and Computer Engineering at the University of British Columbia, where he is currently a Professor. His research areas include wireless communication systems, mobile networking, Internet of things, smart grid, and energy systems. Dr. Wong is the Editor-in-Chief of the IEEE Transactions on Wireless Communications. He has served as an Area Editor of the IEEE Transactions on Communications and IEEE Open Journal of the Communications Society,  an Associate Editor of the IEEE Transactions on Mobile Computing and IEEE Transactions on Vehicular Technology, and a guest editor of the IEEE Journal on Selected Areas in Communications, IEEE Wireless Communications, and IEEE Internet of Things Journal. He has served as a General Chair of the IEEE INFOCOM 2024. Dr. Wong is an IEEE Vehicular Technology Society Distinguished Lecturer (2023 - 2027) and was an IEEE Communications Society Distinguished Lecturer (2019 - 2020). He received the 2022 Best Paper Award from IEEE Transactions on Mobile Computing, and Best Paper Awards at the IEEE ICC 2022 and IEEE GLOBECOM 2020. He has served as the Chair of the IEEE Vancouver Joint Communications Chapter and the IEEE Communications Society Emerging Technical Subcommittee on Smart Grid Communications. Dr. Wong is a Fellow of the IEEE, Canadian Academy of Engineering, and the Engineering Institute of Canada.
   </p>
 
 portrait_url: /assets/images/photos/portrait.jpg
-portrait_caption: >-
-  Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
 - name: Massachusetts Institute of Technology

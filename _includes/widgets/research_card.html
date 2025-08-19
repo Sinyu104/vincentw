@@ -1,0 +1,43 @@
+{% assign item = include.item %}
+
+<div class="col-12 mb-4">
+  <div class="card shadow-sm p-3 bg-white rounded-xl h-100">
+
+    <!-- DESKTOP VIEW -->
+    <div class="row d-none d-md-flex align-items-center">
+      
+      <!-- IMAGE -->
+      <div class="col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+        {% if item.cover %}
+          <img src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+        {% else %}
+          <svg viewBox="0 0 600 400" class="img-fluid rounded" style="background:#eee; width: 100%; height: 200px;">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="20">
+              No Image
+            </text>
+          </svg>
+        {% endif %}
+      </div>
+
+      <!-- TEXT -->
+      <div class="col-md-8 col-xl-9 pl-md-4">
+        <h5 class="font-weight-bold mb-2">{{ item.title }}</h5>
+        <div class="text-muted" style="white-space: normal;">
+          {{ item.content | markdownify }}
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE VIEW -->
+    <div class="d-md-none">
+      {% if item.cover %}
+        <img src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="img-fluid rounded-top mb-2" style="max-height: 200px; object-fit: cover;">
+      {% endif %}
+      <h5 class="font-weight-bold">{{ item.title }}</h5>
+      <div class="text-muted small">
+        {{ item.content | markdownify }}
+      </div>
+    </div>
+
+  </div>
+</div>

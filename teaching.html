@@ -1,0 +1,21 @@
+---
+layout: default
+title : Teaching
+navbar_title: Teaching
+---
+
+
+
+<!-- ================== Current Research Work ================== -->
+<h2 class="pt-4">Courses Taught Previously</h2>
+
+<div class="my-0 p-0 bg-white shadow-sm rounded-xl">
+  <div class="px-3">
+    <div class="row">
+      {% assign teaching = site.teaching %}
+      {% for item in teaching %}
+        {% include widgets/teaching_card.html item=item %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

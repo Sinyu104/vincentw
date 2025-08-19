@@ -1,0 +1,88 @@
+{% assign item = include.item %}
+
+<div class="col-12 col-md-6 mb-3">
+  <div class="card shadow-sm h-100">
+    
+    <!-- DESKTOP VIEW -->
+    <div class="d-none d-md-flex no-gutters align-items-stretch">
+      
+      <!-- IMAGE -->
+      <div class="p-md-3 d-flex justify-content-center align-items-center" style="flex: 0 0 35%; max-width: 35%; min-height: 250px;">
+        {% if item.image %}
+          <img src="{{ item.image | relative_url }}" alt="{{ item.name }}" class="img-fluid rounded-sm" style="max-height: 220px; object-fit: cover;">
+        {% else %}
+          <svg class="w-100 rounded-sm" viewBox="0 0 300 200" style="background:#eee;">
+            <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="#aaa" font-size="20">
+              No Image
+            </text>
+          </svg>
+        {% endif %}
+      </div>
+
+      <!-- TEXT -->
+      <div class="p-3 pl-md-0 flex-grow-1">
+        <!-- Name and Icons INLINE -->
+        <div class="d-flex align-items-center flex-wrap mb-1">
+          <h5 class="mt-0 mb-0 mr-2 font-weight-bold">{{ item.name }}</h5>
+
+          {% if item.links.google_scholar %}
+            <a class="pr-2 no-break" target="_blank" href="{{ item.links.google_scholar }}">
+              <i class="fab fa-google-scholar"></i>
+            </a>
+          {% endif %}
+
+          {% if item.links.github %}
+            <a class="pr-2 no-break" target="_blank" href="https://github.com/{{ item.links.github }}">
+              <i class="fab fa-github"></i>
+            </a>
+          {% endif %}
+
+          {% if item.links.linkedin %}
+            <a class="pr-2 no-break" target="_blank" href="https://www.linkedin.com/in/{{ item.links.linkedin }}">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          {% endif %}
+
+          {% if item.links.website %}
+            <a class="pr-2 no-break" target="_blank" href="{{ item.links.website }}">
+              <i class="fas fa-link"></i>
+            </a>
+          {% endif %}
+        </div>
+
+        <!-- Position line -->
+        {% if item.position %}
+          <p class="mb-1 text-muted">{{ item.position }}</p>
+        {% endif %}
+
+        <!-- Email line -->
+        {% if item.links.email %}
+          <p class="mb-1">
+            <span class="pr-3 no-break">
+                <i class="fas fa-envelope"></i> <span class="email-text">{{ item.links.email | replace: "@", " AT " }}</span>
+            </span>
+          </p>
+        {% endif %}
+
+        <!-- Research topics / description -->
+        <div class="mt-2 text-muted">
+          {{ item.content | markdownify }}
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE VIEW -->
+    <div class="d-md-none">
+      {% if item.image %}
+        <img src="{{ item.image | relative_url }}" alt="{{ item.name }}" class="img-fluid rounded-top">
+      {% endif %}
+      <div class="p-3">
+        <h5 class="mt-0 mb-1 font-weight-normal">{{ item.name }}</h5>
+        <div class="mt-0 mb-0 small text-muted">
+          {{ item.content | markdownify }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

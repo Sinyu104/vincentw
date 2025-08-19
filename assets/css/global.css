@@ -90,3 +90,39 @@ div.lazy {
     font-family: Courier, monospace;
 }
 
+.publication-item {
+  display: flex;
+}
+
+.publication-item .pub-index {
+  width: 1.5em; /* Enough space for "10)" etc. */
+  flex-shrink: 0;
+}
+
+.publication-item .pub-content {
+  flex: 1;
+}
+
+.abstract-text {
+  display: -webkit-box;           /* Required for WebKit browsers */
+  -webkit-box-orient: vertical;   /* Required for vertical clamping */
+  overflow: hidden;
+  -webkit-line-clamp: 3;          /* Safari/Chrome/Edge */
+  line-clamp: 3;                   /* Newer spec-compatible syntax */
+}
+
+.abstract-text.expanded {
+  -webkit-line-clamp: unset;      /* Remove clamp */
+  line-clamp: unset;               /* Remove clamp */
+}
+
+.read-more {
+  font-weight: bold;
+  font-size: 0.9em; /* Slightly smaller */
+  color: black;
+  text-decoration: none; /* Remove underline */
+}
+
+.read-more:hover {
+  text-decoration: underline; /* Optional hover effect */
+}
