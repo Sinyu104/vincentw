@@ -95,7 +95,7 @@ div.lazy {
 }
 
 .publication-item .pub-index {
-  width: 1.5em; /* Enough space for "10)" etc. */
+  width: 1.8em; /* Enough space for "10)" etc. */
   flex-shrink: 0;
 }
 
