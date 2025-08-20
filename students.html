@@ -40,6 +40,12 @@ navbar_title: Students
   .alumni-list li {
   margin-bottom: 0.5rem; /* Adjust this value as needed */
 }
+  @media (max-width: 576px) {
+    .date-badge {
+      font-size: 0.9rem !important;
+      padding: 4px 10px !important;
+    }
+  }
 </style>
 
 <h3 class="pt-4">Alumni:</h3>
@@ -53,7 +59,7 @@ navbar_title: Students
         {% assign phd_alumni = site.students | where: "degree", "Ph.D." | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
         {% for student in phd_alumni %}
           <li>
-            <span class="badge badge-warning badge-rounded-big mr-2"">{{ student.year }}</span>
+            <span class="badge badge-warning badge-rounded-big mr-2 date-badge">{{ student.year }}</span>
             <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
           </li>
         {% endfor %}
@@ -65,7 +71,7 @@ navbar_title: Students
         {% assign postdoc_alumni = site.students | where: "degree", "Postdoc" | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
         {% for student in postdoc_alumni %}
           <li>
-            <span class="badge badge-primary badge-rounded-big mr-2">{{ student.year }}</span>
+            <span class="badge badge-primary badge-rounded-big mr-2 date-badge">{{ student.year }}</span>
             <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
           </li>
         {% endfor %}
@@ -77,11 +83,72 @@ navbar_title: Students
         {% assign masc_alumni = site.students | where: "degree", "MASc/MEng" | where_exp: "s", "s.path contains '/past/'" | sort: "year" | reverse %}
         {% for student in masc_alumni %}
           <li>
-            <span class="badge badge-success badge-rounded-big mr-2">{{ student.year }}</span>
+            <span class="badge badge-success badge-rounded-big mr-2 date-badge">{{ student.year }}</span>
             <strong>{{ student.name }}</strong>{% if student.position %} – {{ student.position }}{% endif %}
           </li>
         {% endfor %}
       </ul>
     </div>
+  </div>
+</div>
+
+<hr />
+<!-- ================== Past Research Work ================== -->
+<h3 class="pt-4">Photos with Graduate Students and Colleagues</h3>
+<div class="px-3">
+  <div class="my-3 p-3 bg-white shadow-sm rounded">
+
+    <div class="row">
+      {% assign photo_page = site.students | where: "title", "Photos with Graduate Students and Colleagues" | first %}
+      {% assign sorted_photos = photo_page.photos | sort: "filename" | reverse %}
+      {% for photo in sorted_photos %}
+        <div class="col-12 d-flex justify-content-center mb-3">
+          <div class="position-relative" style="display: inline-block;">
+
+            <!-- Fancy DATE BADGE -->
+            <span class="badge position-absolute shadow-sm date-badge"
+              style="
+                top: 10px;
+                left: 10px;
+                background: linear-gradient(135deg, #4a90e2, #007bff);
+                color: white;
+                padding: 6px 14px;
+                font-size: 0.95rem;
+                border-radius: 20px;
+                z-index: 10;">
+              <span class="d-none d-sm-inline">{{ photo.filename | slice: 0, 4 }}-{{ photo.filename | slice: 4, 2 }}</span> <!-- Desktop -->
+              <span class="d-inline d-sm-none" style="font-size: 0.8rem;">{{ photo.filename | slice: 0, 4 }}-{{ photo.filename | slice: 4, 2 }}</span> <!-- Mobile -->
+            </span>
+
+            <!-- Styled IMAGE -->
+            <img src="{{ '/assets/images/photos/student_colleague/' | append: photo.filename | relative_url }}" 
+                alt="{{ photo.caption }}" 
+                class="img-fluid rounded shadow-sm"
+                style="
+                  display: block;
+                  max-width: 100%;
+                  height: auto;
+                  border-radius: 12px;
+                  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+                  transition: transform 0.3s ease;
+                "
+                onmouseover="this.style.transform='scale(1.02)'"
+                onmouseout="this.style.transform='scale(1)'">
+          </div>
+        </div>
+
+        <!-- Caption -->
+        <div class="text-center mb-4" style="margin-top: -8px;">
+          <p class="font-weight-bold" style="font-size: 1.2rem;">
+            <span class="d-none d-sm-inline">{{ photo.caption }}</span> <!-- Desktop -->
+            <span class="d-inline d-sm-none" style="font-size: 1rem;">{{ photo.caption }}</span> <!-- Mobile -->
+          </p>
+        </div>
+
+        <div class="w-75 mx-auto mt-2 mb-4" style="border-top: 2px dashed #bbb;"></div>
+
+      {% endfor %}
+    </div>
+
   </div>
 </div>
